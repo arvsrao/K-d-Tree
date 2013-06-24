@@ -1,9 +1,7 @@
 k-D Tree
 ============
 
-Code for creation of k-D Tree. 
-
-**presently this project is in development**
+k-D Tree Project is mainly a C++ implemenation of a k-d tree data structure. A k-d tree (short for k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space.
 
 Requires:
 
