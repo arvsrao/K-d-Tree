@@ -21,8 +21,8 @@ class Node
 {
  public:
 	 typedef float numType;
-	 std::unique_ptr<Node> left;
-	 std::unique_ptr<Node> right;
+	 Node* left = nullptr;// = std::unique_ptr<Node>( new Node(3) );
+	 Node* right = nullptr; //( new Node(3));
 	 std::vector<numType> data; 
 	 
      //default constructor
@@ -58,7 +58,7 @@ class Kdtree
 	vecType findMedian(int axis, std::list<vecType> &plist, std::list<vecType> &left, 
 								std::list<vecType> &right );
 	//function for making the tree
-	void makeTree( Node& head, std::list<vecType> &plist, int depth );
+	void makeTree( Node* head, std::list<vecType> &plist, int depth );
 };
 
 #include "kdtree.cpp"
