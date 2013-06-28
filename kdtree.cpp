@@ -72,14 +72,14 @@ void Kdtree::makeTree( Node* head, std::list<Kdtree::vecType>& plist, int depth 
 		Kdtree::vecType median = Kdtree::findMedian(axis, plist, left_list, right_list); 
 		head->data = median;
 		
-		Node* left_node(k);
-		Node* right_node(k);
+		Node* left_node = new Node(k);
+		Node* right_node = new Node(k);
 		
 		std::cout<< "in makeTree " << plist.empty() <<"\n";
 		Kdtree::makeTree( left_node, left_list, depth+1);
-		head.left = left_node;
+		head->left = left_node;
 		
 		Kdtree::makeTree( right_node, right_list, depth+1);
-		head.right = &right_node;
+		head->right = right_node;
 	}
 } 
