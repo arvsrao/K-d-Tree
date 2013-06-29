@@ -57,6 +57,46 @@ Kdtree::vecType Kdtree::findMedian(int axis, std::list<Kdtree::vecType> &plist, 
 	return median;
 }
 
+void Kdtree::print_data(std::vector<numType> pt)
+{
+	for( auto i = 0; i < pt.size(); i++)
+	{
+	    std::cout<< pt[i] << ", ";
+	}
+	std::cout<<"\n";
+}
+
+/*
+*
+*
+*/
+void Kdtree::printTree( Node* head )
+{
+	//find the tree depth 
+	int maxdepth = 3;
+	int spaces = pow(2, maxdepth +1 ) - 1;
+	
+	
+	std::cout<< "\n**** Print of Tree **********\n";
+	std::queue< Node* > q; 
+	Node * temp = head;
+	q.push(temp);
+	
+	while( !q.empty() )
+	{
+		temp = q.front();
+		q.pop();
+		if (temp == nullptr)
+			std::cout<<"NULL\n";
+		else
+		{
+			Kdtree::print_data(temp->data);
+			q.push(temp->left);
+			q.push(temp->right);
+		}
+	}
+}
+
 /*
 *  algorithm is based on http://en.wikipedia.org/wiki/Kd_tree
 */
@@ -75,11 +115,10 @@ void Kdtree::makeTree( Node* head, std::list<Kdtree::vecType>& plist, int depth 
 		Node* left_node = new Node(k);
 		Node* right_node = new Node(k);
 		
-		std::cout<< "in makeTree " << plist.empty() <<"\n";
 		Kdtree::makeTree( left_node, left_list, depth+1);
-		head->left = left_node;
+		if (!left_list.empty()) head->left = left_node;
 		
 		Kdtree::makeTree( right_node, right_list, depth+1);
-		head->right = right_node;
+		if (!right_list.empty()) head->right = right_node;
 	}
 } 

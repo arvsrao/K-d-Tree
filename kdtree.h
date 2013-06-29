@@ -16,6 +16,7 @@
 #include <vector>
 #include <list>
 #include <cmath>
+#include <queue>
 
 class Node
 {
@@ -53,6 +54,17 @@ class Kdtree
 
 	//default deconstructor
 	~Kdtree();
+	
+	/*
+	* support function for printTree
+	*/
+	void print_data(std::vector<numType> pt);
+		
+	/*  prints the tree
+	*   and really works best for small trees 
+	*   as a test of tree construction.
+	*/  
+	void printTree( Node* head );
 	
 	//function for finding the median of a list of points
 	vecType findMedian(int axis, std::list<vecType> &plist, std::list<vecType> &left, 

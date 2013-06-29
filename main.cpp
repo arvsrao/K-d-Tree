@@ -64,16 +64,15 @@ int main(int argc, char ** argv)
 		point_list.push_back(pt);
 	}
 	
-	point_list.sort( [&](Kdtree::vecType& a, Kdtree::vecType& b){ return a[1] > b[1];} );
-	for ( auto& x : point_list )
-	{
-		print(x);
-	}
-	
 	Kdtree kd;
 	Node* head = new Node(3);
+	Node* temp = nullptr;
 	kd.makeTree(head, point_list,0);
-	
+	kd.printTree(head);
+ 	
+	std::cout<<"\n\n";
+	head = nullptr;
+	//print( head->data );
 	/*Node head(3, point_list.front());	
 	std::unique_ptr<Node> a = std::unique_ptr<Node>( new Node(3) );
 	std::unique_ptr<Node> b;
