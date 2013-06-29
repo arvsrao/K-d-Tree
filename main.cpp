@@ -67,8 +67,8 @@ int main(int argc, char ** argv)
 	Kdtree kd;
 	Node* head = new Node(3);
 	Node* temp = nullptr;
-	kd.makeTree(head, point_list,0);
-	kd.printTree(head);
+	kd.makeTree(point_list);
+	kd.printTree(kd.getRoot());
  	
 	std::cout<<"\n\n";
 	head = nullptr;

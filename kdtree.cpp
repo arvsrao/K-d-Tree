@@ -75,31 +75,37 @@ void Kdtree::printTree( Node* head )
 	//find the tree depth 
 	int maxdepth = 3;
 	int spaces = pow(2, maxdepth +1 ) - 1;
-	
+	int depth = 0;
 	
 	std::cout<< "\n**** Print of Tree **********\n";
-	std::queue< Node* > q; 
+	std::queue< Node* > current, next; 
 	Node * temp = head;
-	q.push(temp);
-	
-	while( !q.empty() )
+	current.push(temp);
+
+	while( !current.empty() )
 	{
-		temp = q.front();
-		q.pop();
+		temp = current.front();
+		current.pop();
+
 		if (temp == nullptr)
 			std::cout<<"NULL\n";
 		else
 		{
 			Kdtree::print_data(temp->data);
-			q.push(temp->left);
-			q.push(temp->right);
+			next.push(temp->left);
+			next.push(temp->right);
+		}
+		if(current.empty())
+		{
+			depth++;
+			std::cout<< "level: "<<  depth <<"\n";
+			std::swap(current, next);
 		}
 	}
 }
 
 /*
-*
-*
+* Getter for root tree node.
 */
 Node* Kdtree::getRoot()
 {
