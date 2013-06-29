@@ -98,9 +98,25 @@ void Kdtree::printTree( Node* head )
 }
 
 /*
+*
+*
+*/
+Node* Kdtree::getRoot()
+{
+	return Kdtree::root;
+}
+
+/*
 *  algorithm is based on http://en.wikipedia.org/wiki/Kd_tree
 */
-void Kdtree::makeTree( Node* head, std::list<Kdtree::vecType>& plist, int depth )
+void Kdtree::makeTree(std::list<Kdtree::vecType>& plist)
+{
+	Node* head = new Node(3);
+	Kdtree::_makeTree( head, plist, 0 );
+	Kdtree::root = head;
+}
+
+void Kdtree::_makeTree( Node* head, std::list<Kdtree::vecType>& plist, int depth )
 {	
 	if( !plist.empty() ) 
 	{
@@ -115,10 +131,10 @@ void Kdtree::makeTree( Node* head, std::list<Kdtree::vecType>& plist, int depth 
 		Node* left_node = new Node(k);
 		Node* right_node = new Node(k);
 		
-		Kdtree::makeTree( left_node, left_list, depth+1);
+		Kdtree::_makeTree( left_node, left_list, depth+1);
 		if (!left_list.empty()) head->left = left_node;
 		
-		Kdtree::makeTree( right_node, right_list, depth+1);
+		Kdtree::_makeTree( right_node, right_list, depth+1);
 		if (!right_list.empty()) head->right = right_node;
 	}
 } 

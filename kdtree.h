@@ -55,6 +55,10 @@ class Kdtree
 	//default deconstructor
 	~Kdtree();
 	
+	/* 
+	*   Return the tree root node
+	*/
+	Node* getRoot();
 	/*
 	* support function for printTree
 	*/
@@ -70,7 +74,14 @@ class Kdtree
 	vecType findMedian(int axis, std::list<vecType> &plist, std::list<vecType> &left, 
 								std::list<vecType> &right );
 	//function for making the tree
-	void makeTree( Node* head, std::list<vecType> &plist, int depth );
+	void makeTree( std::list<vecType> &plist );
+	
+	
+ private:
+	//helper for makeTree 
+	void _makeTree( Node* head, std::list<vecType> &plist, int depth );
+	
+	Node* root;
 };
 
 #include "kdtree.cpp"
