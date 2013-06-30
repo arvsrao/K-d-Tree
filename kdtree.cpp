@@ -105,14 +105,6 @@ void Kdtree::printTree( Node* head )
 }
 
 /*
-* Getter for root tree node.
-*/
-Node* Kdtree::getRoot()
-{
-	return Kdtree::root;
-}
-
-/*
 *  algorithm is based on http://en.wikipedia.org/wiki/Kd_tree
 */
 void Kdtree::makeTree(std::list<Kdtree::vecType>& plist)

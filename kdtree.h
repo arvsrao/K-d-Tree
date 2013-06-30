@@ -59,7 +59,7 @@ class Kdtree
 	/* 
 	*   Return the tree root node
 	*/
-	Node* getRoot();
+	Node* getRoot() const { return root; };
 	/*
 	* support function for printTree
 	*/
