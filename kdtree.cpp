@@ -46,11 +46,11 @@ Kdtree::vecType Kdtree::findMedian(int axis, std::list<Kdtree::vecType> &plist, 
 	
 	for ( auto& x : plist )
 	{
-		if (count <= med)
+		if (count < med)
 			left.push_back(x);
 		else
 			right.push_back(x);
-		count++;
+		++count;
 	}
 	median = left.back();
 	left.pop_back();
